@@ -1,0 +1,143 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://characters/scripts/chicken.gd" type="Script" id=1]
+[ext_resource path="res://sprites/characters/chicken/head.png" type="Texture" id=2]
+[ext_resource path="res://sprites/characters/chicken/feathers/1.png" type="Texture" id=3]
+[ext_resource path="res://sprites/characters/chicken/body.png" type="Texture" id=4]
+[ext_resource path="res://sprites/characters/chicken/eyes/1.png" type="Texture" id=5]
+[ext_resource path="res://sprites/characters/chicken/arm/R_1I.png" type="Texture" id=6]
+[ext_resource path="res://sprites/characters/chicken/arm/L_1I.png" type="Texture" id=7]
+[ext_resource path="res://sprites/characters/chicken/mouth/1_I.png" type="Texture" id=8]
+[ext_resource path="res://sprites/characters/chicken/feet/1_LI.png" type="Texture" id=9]
+[ext_resource path="res://sprites/characters/chicken/feet/1_RI.png" type="Texture" id=10]
+
+[sub_resource type="CircleShape2D" id=11]
+radius = 252.018
+
+[sub_resource type="Animation" id=1]
+resource_name = "walk_y"
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "1_I",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "1_I",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "1_D",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ ExtResource( 8 ) ],
+"loop": true,
+"name": "1_D",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "1_D",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=7]
+animations = [ {
+"frames": [ ExtResource( 7 ) ],
+"loop": true,
+"name": "1_D",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=8]
+animations = [ {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "1_D",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=9]
+animations = [ {
+"frames": [ ExtResource( 9 ) ],
+"loop": true,
+"name": "1_D",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=10]
+animations = [ {
+"frames": [ ExtResource( 10 ) ],
+"loop": true,
+"name": "1_D",
+"speed": 5.0
+} ]
+
+[node name="chicken" type="KinematicBody2D"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+shape = SubResource( 11 )
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/walk_y = SubResource( 1 )
+
+[node name="Body" type="AnimatedSprite" parent="."]
+frames = SubResource( 2 )
+animation = "1_I"
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Head" type="AnimatedSprite" parent="Body"]
+frames = SubResource( 3 )
+animation = "1_I"
+
+[node name="Eyes" type="AnimatedSprite" parent="Body/Head"]
+frames = SubResource( 4 )
+animation = "1_D"
+
+[node name="Mouth" type="AnimatedSprite" parent="Body/Head"]
+frames = SubResource( 5 )
+animation = "1_D"
+
+[node name="Feathers" type="AnimatedSprite" parent="Body/Head"]
+frames = SubResource( 6 )
+animation = "1_D"
+
+[node name="Arm_L" type="AnimatedSprite" parent="Body"]
+frames = SubResource( 7 )
+animation = "1_D"
+
+[node name="Arm_R" type="AnimatedSprite" parent="Body"]
+frames = SubResource( 8 )
+animation = "1_D"
+
+[node name="Leg_L" type="AnimatedSprite" parent="Body"]
+frames = SubResource( 9 )
+animation = "1_D"
+
+[node name="Leg_R" type="AnimatedSprite" parent="Body"]
+frames = SubResource( 10 )
+animation = "1_D"
