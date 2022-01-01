@@ -7,17 +7,22 @@ var biome_ids = 2
 var biomes = {}
 var day = true
 var daytrans = false
+weather = "clear"
 onready var canvas_color = $Darkness.get_color()
+# Colors
+onready var darkness = Color(91, 30, 89, 255)
+onready var full_light = Color(255, 255, 255, 255)
 func _ready():
 	Global_Time += 1
 	_generate(100)
 
 func _process(delta):
-	
 	if daytrans == true:
 		if day == false:
-			if canvas_color.a > 0:
-				canvas_color.a -= .01
+			if $Darkness.get_color().r > 91:
+				canvas_color = $Darkness.get_color()
+				canvas_color.r += .01
+			if $Darkness.get_color().r > 
 				$Darkness.set_color(canvas_color)
 			else:
 				daytrans = false
@@ -25,6 +30,8 @@ func _process(delta):
 			if canvas_color.a < 0:
 				canvas_color.a += .01
 				$Darkness.set_color(canvas_color)
+func _fadeintocol():
+	pass
 func _generate(n):
 	WORLD_SIZE = n
 	generate_biomes()
@@ -41,13 +48,13 @@ func populate_tiles():
 		for y in range(0, 100):
 			pass
 func generate_biomes():
-	rng.randomize()
-	var biome_s = WORLD_SIZE / 4 + rng.randi_range(1, 5)
 	var biome_c = WORLD_SIZE / 50
 	for biome in range(0, biome_c):
+		rng.randomize()
+		var biome_s = WORLD_SIZE / 4 + rng.randi_range(1, 5)
 		var biometype = rng.randi_range(0, biome_ids)
 		print(biome)
-		biomes[biome] = [biometype]
+		biomes[biome] = [biometype, biome_s]
 
 
 
