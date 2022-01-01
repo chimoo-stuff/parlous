@@ -11,6 +11,8 @@ config_version=4
 [application]
 
 config/name="parlous"
+run/main_scene="res://scenes/main.tscn"
+boot_splash/image="res://sprites/splash.png"
 config/icon="res://icon.png"
 
 [display]
